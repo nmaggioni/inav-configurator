@@ -2323,6 +2323,12 @@
     "emergencyDescentRate": {
         "message": "Emergency landing speed [cm/s]"
     },
+    "geofenceRadius": {
+        "message": "Geofence radius [m]"
+    },
+    "geofenceHeight": {
+        "message": "Geofence height [m]"
+    },
     "cruiseThrottle": {
         "message": "Cruise throttle"
     },

@@ -1337,6 +1337,12 @@ var mspHelper = (function (gui) {
                 RTH_AND_LAND_CONFIG.landSlowdownMinAlt = data.getUint16(13, true);
                 RTH_AND_LAND_CONFIG.landSlowdownMaxAlt = data.getUint16(15, true);
                 RTH_AND_LAND_CONFIG.emergencyDescentRate = data.getUint16(17, true);
+
+                if (semver.gte(CONFIG.flightControllerVersion, "2.3.0")) {
+                    RTH_AND_LAND_CONFIG.geofenceRadius = data.getUint32(19, true);
+                    RTH_AND_LAND_CONFIG.geofenceHeight = data.getUint16(23, true);
+                }
+
                 break;
 
             case MSPCodes.MSP_SET_RTH_AND_LAND_CONFIG:
@@ -2010,6 +2016,15 @@ var mspHelper = (function (gui) {
 
                 buffer.push(lowByte(RTH_AND_LAND_CONFIG.emergencyDescentRate));
                 buffer.push(highByte(RTH_AND_LAND_CONFIG.emergencyDescentRate));
+
+                if (semver.gte(CONFIG.flightControllerVersion, "2.3.0")) {
+                    buffer.push(lowByte(RTH_AND_LAND_CONFIG.geofenceRadius));
+                    buffer.push(highByte(RTH_AND_LAND_CONFIG.geofenceRadius));
+
+                    buffer.push(lowByte(RTH_AND_LAND_CONFIG.geofenceHeight));
+                    buffer.push(highByte(RTH_AND_LAND_CONFIG.geofenceHeight));
+                }
+
                 break;
 
             case MSPCodes.MSP_SET_FW_CONFIG:
