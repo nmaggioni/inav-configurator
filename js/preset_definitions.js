@@ -1506,5 +1506,57 @@ presets.presets = [
             }
         ],
         type: 'flyingwing'
+    },
+    {
+        name: "ZOHD Drift",
+        description: "Lightweight glider. Preset based on <b>low power</b> 2S configurations and stock ZOHD ESC & servos.",
+        features: [
+            "Adjusted gyro filtering",
+            "Adjusted PIDs",
+            "Adjusted rates",
+            "Adjusted throttle values",
+            "Adjusted climb angles"
+        ],
+        applyDefaults: ["INAV_PID_CONFIG", "RC_tuning", "PID_ADVANCED", "FILTER_CONFIG"],
+        settingsMSP: [
+            presets.elementHelper("INAV_PID_CONFIG", "gyroscopeLpf", 0),
+            presets.elementHelper("FILTER_CONFIG", "gyroSoftLpfHz", 35),
+            presets.elementHelper("RC_tuning", "roll_rate", 190),
+            presets.elementHelper("RC_tuning", "pitch_rate", 130),
+            presets.elementHelper("MISC", "maxthrottle", 2000),
+            presets.elementHelper("FW_CONFIG", "maxClimbAngle", 12),
+            presets.elementHelper("FW_CONFIG", "pitchToThrottle", 20)
+        ],
+        settings: [
+            {
+                key: "platform_type",
+                value: "AIRPLANE"
+            },
+            {
+                key: "fw_p_pitch",
+                value: 9
+            },
+            {
+                key: "fw_i_pitch",
+                value: 20
+            },
+            {
+                key: "fw_ff_pitch",
+                value: 95
+            },
+            {
+                key: "fw_p_roll",
+                value: 4
+            },
+            {
+                key: "fw_i_roll",
+                value: 10
+            },
+            {
+                key: "fw_ff_roll",
+                value: 45
+            }
+        ],
+        type: 'airplane'
     }
 ];
